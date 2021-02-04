@@ -3,26 +3,24 @@ package main
 import (
 	"net"
 	"fmt"
-	"log"
 )
 func main(){
-	conn,err:=net.Dial("tcp","localhost:3000")
-	//string(data)
+	conn,err:=net.Dial("tcp","localhost:3000")s
 	if err!=nil {
-		log.Fatalln(err)
+		fmt.Println(err)
 	}
 
 	_ , err = conn.Write([]byte("hello server"))
 	if err!=nil {
-		log.Fatalln(err)
+		fmt.Println(err)
 	}
 	fmt.Println("Message sent: hello server")
 
 	_,err = conn.Write([]byte("how are you"))
 	if err!=nil {
-		log.Fatalln(err)
+		fmt.Println(err)
 	}
-	fmt.Println("Message sent: how are you")
+	fmt.Println("Message sent: how are you")s
 
 	for {
 		buffer:=make([]byte,1400)

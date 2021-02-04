@@ -2,7 +2,6 @@ package main
 
 import(
 	"fmt"
-	"log"
 	"net"
 )
 
@@ -10,14 +9,14 @@ func main(){
 	fmt.Println("server listening on 3000")
 	listener,err:=net.Listen("tcp","localhost:3000")
 	if err!=nil {
-		log.Fatalln(err)
+		fmt.Println(err)
 	}
 	defer listener.Close()
 
 	for {
 		conn,err:=listener.Accept()
 		if err!=nil{
-			log.Fatalln(err)
+			fmt.Println(err)
 		}
 		fmt.Println("new connection")
 		go listenConnection(conn)
@@ -38,7 +37,7 @@ func listenConnection(conn net.Conn) {
 
 		_,err=conn.Write(data)
 		if err!=nil{
-			log.Fatalln(err)
+			fmt.Println(err)
 		}
 		fmt.Println("Message sent:",string(data))
 	}
